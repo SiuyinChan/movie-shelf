@@ -1,0 +1,64 @@
+.sidebar {
+  margin: 20px 0;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid lightgrey;
+
+  &-image {
+    padding: 20px;
+    width: 150px;
+    height: 150px;
+  }
+
+  &-content {
+    margin-top: 50px;
+
+    &-item:not(:first-child) {
+      margin-top: 50px;
+    }
+
+    &-item {
+      &-title {
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      &:first-child {
+        .sidebar-content-item-categories-item-icon {
+          width: 25px;
+          height: 25px;
+        }
+      }
+
+      &-categories {
+        color: #546e7a;
+        font-weight: 600;
+
+        &-item {
+          border: 1px solid transparent;
+          border-radius: 30px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          margin: 15px 0;
+          padding: 5px 15px;
+          width: 150px;
+
+          &:hover {
+            border-color: #546e7a;
+          }
+
+          &-icon {
+            margin-right: 6px;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,21 @@
+<div class="sidebar">
+  <img alt="movie icon" class="sidebar-image" src="../../../assets/icons/movie-icon.svg">
+  <div class="sidebar-content">
+    <div *ngFor="let section of sections" class="sidebar-content-item">
+      <div class="sidebar-content-item-title">{{ section.title }}</div>
+      <div *ngFor="let category of section.categories" class="sidebar-content-item-categories">
+        <div
+          (click)="categoryClicked.emit({ sectionId: section.id, categoryId: category.id })"
+          class="sidebar-content-item-categories-item"
+        >
+          <img
+            [src]="category.icon || '/assets/icons/donut-icon.svg'"
+            alt="icon"
+            class="sidebar-content-item-categories-item-icon"
+          >
+          {{ category.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

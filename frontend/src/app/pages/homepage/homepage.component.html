@@ -1,0 +1,6 @@
+<div class="homepage">
+  <app-sidebar (categoryClicked)="onCategoryClicked($event)" [sections]="sections"></app-sidebar>
+  <div class="homepage-container">
+    <div class="homepage-header">{{ currentCategory?.name | uppercase }}</div>
+  </div>
+</div>

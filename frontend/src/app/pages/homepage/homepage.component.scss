@@ -1,0 +1,12 @@
+.homepage {
+  display: flex;
+
+  &-container {
+    margin: 20px;
+
+    &-header {
+      font-weight: 200;
+      font-size: 30px;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { TmdbService } from "../../services/tmdb.service";
-import { Movie, MovieDetails } from "../../models";
+import { MovieService } from "../../services/movie.service";
+import { ActiveCategory, Movie, MovieDetails, PaginateResult, Section } from "../../models";
 
 @Component({
   selector: 'app-movie-details',
@@ -9,19 +9,42 @@ import { Movie, MovieDetails } from "../../models";
   styleUrls: ['./movie-details.component.scss']
 })
 export class MovieDetailsComponent implements OnInit {
-  public movie!: MovieDetails;
+  public movie?: MovieDetails;
+  public sections: Section[] = [];
+  public casts: any;
+  public recommendations?: Movie[];
 
   constructor(
+    private readonly router: Router,
     private readonly route: ActivatedRoute,
-    private readonly tmdbService: TmdbService) { }
+    private readonly movieService: MovieService
+  ) {
+    this.movieService.getMovieGenres().subscribe(() => {
+      this.sections = this.movieService.movieSections;
+    });
+  }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      console.log(params['id']);
-      this.tmdbService.getMovieById(params['id']).subscribe((movie: MovieDetails) => {
+    const movieId = this.route.snapshot.paramMap.get('id');
+    if (movieId) {
+      this.movieService.getMovieById(parseInt(movieId)).subscribe((movie: MovieDetails) => {
         this.movie = movie;
         console.log(movie);
+      });
+      this.movieService.getCastByMovieId(parseInt(movieId)).subscribe((credits: any) => {
+        this.casts = credits.cast.slice(0, 5);
       })
-    })
+      this.movieService.getRecommendationByMovieId(parseInt(movieId)).subscribe((recommendations: PaginateResult) => {
+        this.recommendations = recommendations.results;
+      })
+    }
+  }
+
+  onCategoryClicked(event: ActiveCategory): void {
+    this.router.navigate([event.section.toLowerCase(), event.category.toLowerCase()]).then();
+  }
+
+  onGenreClicked(genre: string): void {
+    this.router.navigate(['genres', genre.toLowerCase()]).then();
   }
 }

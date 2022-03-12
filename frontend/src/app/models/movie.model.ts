@@ -3,7 +3,7 @@ import { Category } from "./sidebar.model";
 export interface Movie {
   adult: boolean;
   backdrop_path: string;
-  genre_ids: number[];
+  genre_ids?: number[];
   id: number;
   original_language: string;
   original_title: string;
@@ -17,35 +17,22 @@ export interface Movie {
   vote_count: number;
 }
 
-export interface MovieDetails {
-  adult: boolean,
-  backdrop_path: string,
-  belongs_to_collection: any,
-  budget: 200000000,
-  genres: Category[],
-  homepage: string,
-  id: number,
-  imdb_id: string,
-  original_language: string,
-  original_title: string,
-  overview: string
-  popularity: number,
-  poster_path: string,
-  production_companies: any[],
-  production_countries: any[],
-  release_date: string,
-  revenue: number,
-  runtime: number,
-  spoken_languages: any[],
-  status: string,
-  tagline: string,
-  title: string,
-  video: false,
+export interface MovieDetails extends Movie {
+  belongs_to_collection: any;
+  budget: number;
+  genres: Category[];
+  homepage: string;
+  imdb_id: string;
+  production_companies: any[];
+  production_countries: any[];
+  revenue: number;
+  runtime: number;
+  spoken_languages: any[];
+  status: string;
+  tagline: string;
   videos: {
     results: any[]
-  },
-  vote_average: number,
-  vote_count: number,
+  };
 }
 
 export interface PaginateResult {

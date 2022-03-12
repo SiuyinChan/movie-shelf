@@ -1,1 +1,62 @@
-<p>movie-details works!</p>
+<app-layout [sections]="sections" (categoryClicked)="onCategoryClicked($event)">
+  <div class="movie-details" *ngIf="movie">
+    <div class="movie-details-info">
+      <div class="movie-details-info-image">
+        <img [src]="'https://image.tmdb.org/t/p/w780/' + movie.poster_path" alt="movie image">
+      </div>
+      <div class="movie-details-info-description">
+        <div class="movie-details-info-description-title">{{ movie.title }}</div>
+        <div class="movie-details-info-description-tagline">{{ movie.tagline }}</div>
+        <div class="movie-details-info-description-others">
+          <div class="movie-details-info-description-others-rate">
+            <ng-container *ngFor="let number of [1, 2, 3, 4, 5]">
+              <img *ngIf="number <= movie.vote_average/2; else whiteStar" src="/assets/icons/yellow-star.svg">
+              <ng-template #whiteStar>
+                <img src="/assets/icons/white-star.svg">
+              </ng-template>
+            </ng-container>
+            <div class="movie-details-info-description-others-rate-number">{{ movie.vote_average }}</div>
+          </div>
+          <div class="movie-details-info-description-others-details">
+            <div
+              class="movie-details-info-description-others-details-language">{{ movie.original_language | uppercase }} /
+            </div>
+            <div class="movie-details-info-description-others-details-time">{{ movie.runtime }} mins. /</div>
+            <div
+              class="movie-details-info-description-others-details-year">{{ movie.release_date.substring(0, 4)}}</div>
+          </div>
+        </div>
+        <div class="movie-details-info-description-genres">
+          <div class="movie-details-info-description-genres-title">{{ 'genres' | uppercase }}</div>
+          <div class="movie-details-info-description-genres-content">
+            <div class="movie-details-info-description-genres-content-item" *ngFor="let genre of movie.genres"
+                 (click)="onGenreClicked(genre.name)">
+              <img src="/assets/icons/donut-icon.svg" alt="icon"
+                   class="movie-details-info-description-genres-content-item-icon">
+              <div class="movie-details-info-description-genres-content-item-content">{{ genre.name | uppercase }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="movie-details-info-description-synopsis">
+          <div class="movie-details-info-description-synopsis-title">{{ 'synopsis' | uppercase }}</div>
+          <div class="movie-details-info-description-synopsis-content">{{ movie.overview }}</div>
+        </div>
+        <div class="movie-details-info-description-cast">
+          <div class="movie-details-info-description-cast-title">{{ 'cast' | uppercase }}</div>
+          <div class="movie-details-info-description-cast-content">
+            <div class="movie-details-info-description-cast-content-name" *ngFor="let cast of casts ">{{ cast.name }} /</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="movie-details-recommendation">
+      <div class="movie-details-recommendation-title">
+        <div>{{ 'recommended' | uppercase }}</div>
+        <span>MOVIES</span>
+      </div>
+      <div class="movie-details-recommendation-list">
+        <app-movie-card [movie]="movie" *ngFor="let movie of recommendations"></app-movie-card>
+      </div>
+    </div>
+  </div>
+</app-layout>

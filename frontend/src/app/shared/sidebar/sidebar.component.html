@@ -5,7 +5,7 @@
       <div class="sidebar-content-item-title">{{ section.title }}</div>
       <div *ngFor="let category of section.categories" class="sidebar-content-item-categories">
         <div
-          (click)="categoryClicked.emit({ sectionId: section.id, categoryId: category.id })"
+          (click)="categoryClicked.emit({ section: section.title, category: category.name })"
           class="sidebar-content-item-categories-item"
         >
           <img

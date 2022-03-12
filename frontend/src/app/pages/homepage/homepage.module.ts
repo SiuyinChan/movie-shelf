@@ -4,6 +4,7 @@ import { HomepageRoutingModule } from "./homepage-routing.module";
 import { CommonModule } from "@angular/common";
 import { SidebarModule } from "../../shared/sidebar/sidebar.module";
 import { MovieCardModule } from "../../shared/movie-card/movie-card.module";
+import { AppLayoutModule } from "../../layouts/app-layout/app-layout.module";
 
 @NgModule({
   declarations: [HomepageComponent],
@@ -12,6 +13,7 @@ import { MovieCardModule } from "../../shared/movie-card/movie-card.module";
     CommonModule,
     SidebarModule,
     MovieCardModule,
+    AppLayoutModule,
   ],
   exports: [HomepageComponent]
 })

@@ -8,8 +8,8 @@ import { Router } from "@angular/router";
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
-  @Input() movie!: Movie;
-  score: number = 3;
+  @Input() public movie!: Movie;
+  public score: number = 0;
 
   constructor(private readonly router: Router) {
   }
@@ -19,7 +19,6 @@ export class MovieCardComponent implements OnInit {
   }
 
   public navigate(movieId: number): void {
-    console.log(movieId);
     this.router.navigate(['movie', movieId]).then();
   }
 }

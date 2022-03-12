@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
-import { HomepageComponent } from './homepage.component';
-import { HomepageRoutingModule } from "./homepage-routing.module";
 import { CommonModule } from "@angular/common";
 import { SidebarModule } from "../../shared/sidebar/sidebar.module";
 import { MovieCardModule } from "../../shared/movie-card/movie-card.module";
+import { MovieDetailsComponent } from "./movie-details.component";
+import { MovieDetailsRoutingModule } from "./movie-details-routing.module";
 
 @NgModule({
-  declarations: [HomepageComponent],
+  declarations: [MovieDetailsComponent],
   imports: [
-    HomepageRoutingModule,
+    MovieDetailsRoutingModule,
     CommonModule,
     SidebarModule,
     MovieCardModule,
   ],
-  exports: [HomepageComponent]
+  exports: [MovieDetailsComponent]
 })
-export class HomepageModule {
+export class MovieDetailsModule {
 }

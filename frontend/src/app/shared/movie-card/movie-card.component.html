@@ -1,0 +1,14 @@
+<div class="movie-card" (click)="navigate(movie.id)">
+  <img class="movie-card-image" [src]="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" alt="movie image">
+  <div class="movie-card-info">
+    <div class="movie-card-info-title">{{ movie.title }}</div>
+    <div class="movie-card-info-rate">
+      <ng-container *ngFor="let number of [1, 2, 3, 4, 5]">
+        <img *ngIf="number <= score; else whiteStar" src="/assets/icons/yellow-star.svg">
+        <ng-template #whiteStar>
+          <img src="/assets/icons/white-star.svg">
+        </ng-template>
+      </ng-container>
+    </div>
+  </div>
+</div>

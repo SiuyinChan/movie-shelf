@@ -1,6 +1,12 @@
 <div class="homepage">
   <app-sidebar (categoryClicked)="onCategoryClicked($event)" [sections]="sections"></app-sidebar>
   <div class="homepage-container">
-    <div class="homepage-header">{{ currentCategory?.name | uppercase }}</div>
+    <div class="homepage-header">
+      <div>{{ currentCategory?.name | uppercase }}</div>
+      <span>MOVIES</span>
+    </div>
+    <div class="homepage-movies-container">
+      <app-movie-card [movie]="movie" *ngFor="let movie of movies"></app-movie-card>
+    </div>
   </div>
 </div>

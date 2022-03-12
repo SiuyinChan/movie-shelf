@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { TmdbService } from "../../services/tmdb.service";
-import { ActiveCategory, Category, PaginateResult, Section } from "../../models";
+import { ActiveCategory, Category, Movie, PaginateResult, Section } from "../../models";
 
 @Component({
   selector: 'app-homepage',
@@ -10,6 +10,7 @@ import { ActiveCategory, Category, PaginateResult, Section } from "../../models"
 })
 export class HomepageComponent implements OnInit {
   public currentCategory?: Category;
+  public movies?: Movie[];
 
   public sections: Section[] = [
     {
@@ -62,10 +63,11 @@ export class HomepageComponent implements OnInit {
         if (params['section'] === '1' && this.currentCategory.endpoint) {
           this.currentCategory.endpoint().subscribe((p: PaginateResult) => {
             console.log(p);
+            this.movies = p.results;
           });
         } else if (params['section'] === '2') {
           this.tmdbService.getMoviesByGenre(params['category']).subscribe((p: PaginateResult) => {
-            console.log(p);
+            this.movies = p.results;
           });
         }
       }

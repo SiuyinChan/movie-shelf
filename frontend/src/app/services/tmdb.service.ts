@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { environment } from "../../environments/environment";
-import { Category, PaginateResult } from "../models";
+import { Category, Movie, MovieDetails, PaginateResult } from "../models";
 
 @Injectable({
   providedIn: 'root'
@@ -59,4 +59,13 @@ export class TmdbService {
       }
     })
   };
+
+  public getMovieById(id: number): Observable<MovieDetails> {
+    return this.http.get<any>(`${this.baseUrl}/movie/${id}`, {
+      params: {
+        api_key: this.apiKey,
+        append_to_response: 'videos'
+      }
+    })
+  }
 }

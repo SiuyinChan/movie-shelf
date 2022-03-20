@@ -35,4 +35,10 @@ public class UserServiceImpl implements UserService {
     public User loadUserById(Long id) {
         return findById(id).orElseThrow(UserNotFoundException::new);
     }
+
+    @Override
+    public void deleteUserById(Long id) {
+        User user = loadUserById(id);
+        userRepository.delete(user);
+    }
 }

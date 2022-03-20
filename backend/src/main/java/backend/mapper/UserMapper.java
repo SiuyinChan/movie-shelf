@@ -1,7 +1,5 @@
 package backend.mapper;
-
-import java.util.stream.Collectors;
-
+import backend.dto.request.UserRequest;
 import backend.dto.response.UserResponse;
 import backend.entity.User;
 import org.mapstruct.BeanMapping;
@@ -20,6 +18,6 @@ public interface UserMapper {
         return userResponse;
     }
 
-//    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-//    void requestToUser(UserRequest userRequest, @MappingTarget User user);
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    static void requestToUser(UserRequest userRequest, @MappingTarget User user) {}
 }

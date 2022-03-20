@@ -12,6 +12,7 @@ import backend.mapper.UserMapper;
 import backend.security.JwtProvider;
 import backend.service.AuthService;
 import backend.service.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -61,5 +62,10 @@ public class AuthServiceImpl implements AuthService {
                 throw new WrongPasswordException();
             }
         }).orElseThrow(UserNotFoundException::new);
+    }
+
+    @Override
+    public User getLoggedUser() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 }

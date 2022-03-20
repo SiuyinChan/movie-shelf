@@ -10,6 +10,7 @@ import { ActiveCategory, Movie, PaginateResult, Section } from "../../models";
 })
 export class HomepageComponent {
   public currentCategory: string = '';
+  public searchedMovie: boolean = false;
   public movies: Movie[] = [];
   public sections: Section[] = [];
 
@@ -22,9 +23,16 @@ export class HomepageComponent {
       this.sections = this.movieService.movieSections;
       this.route.params.subscribe((params) => {
         this.currentCategory = params['category'];
-        this.movieService.getMoviesByCategory(params['category']).subscribe((r: PaginateResult) => {
-          this.movies = r.results;
-        })
+        this.searchedMovie = params['section'] === 'search';
+        if (params['section'] === 'search') {
+          this.movieService.getMoviesByName(params['category']).subscribe((r: PaginateResult) => {
+            this.movies = r.results;
+          })
+        } else {
+          this.movieService.getMoviesByCategory(params['category']).subscribe((r: PaginateResult) => {
+            this.movies = r.results;
+          })
+        }
       });
     });
   }

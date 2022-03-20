@@ -121,6 +121,15 @@ export class MovieService {
     })
   }
 
+  public getMoviesByName(name: string): Observable<PaginateResult> {
+    return this.http.get<any>(`${this.baseUrl}/search/movie`, {
+      params: {
+        api_key: this.apiKey,
+        query: name,
+      }
+    })
+  }
+
   public getCastByMovieId(movieId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/movie/${movieId}/credits`, {
       params: {

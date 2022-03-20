@@ -1,5 +1,11 @@
 <div class="app-layout">
   <app-sidebar *ngIf="!isMobile" [sections]="sections" (categoryClicked)="categoryClicked.emit($event)"></app-sidebar>
   <app-navbar *ngIf="isMobile"></app-navbar>
-  <ng-content></ng-content>
+  <div class="app-layout-container">
+    <div class="app-layout-header">
+      <app-searchbar *ngIf="!isMobile"></app-searchbar>
+      <app-user-capsule *ngIf="!isMobile"></app-user-capsule>
+    </div>
+    <ng-content></ng-content>
+  </div>
 </div>

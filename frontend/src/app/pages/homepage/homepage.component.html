@@ -2,7 +2,7 @@
   <div class="homepage-container">
     <div class="homepage-header">
       <div>{{ currentCategory | uppercase }}</div>
-      <span>MOVIES</span>
+      <span>{{ searchedMovie ? 'SEARCH RESULTS': 'MOVIES'}}</span>
     </div>
     <div class="homepage-movies-container">
       <app-movie-card [movie]="movie" *ngFor="let movie of movies"></app-movie-card>

@@ -1,7 +1,7 @@
 .homepage {
 
   &-container {
-    margin: 40px;
+    margin: 20px 40px;
   }
 
   &-header {
@@ -23,6 +23,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 40px;
+    min-width: calc(100vw - 300px);
 
     app-movie-card {
       flex: 0 0 20%;

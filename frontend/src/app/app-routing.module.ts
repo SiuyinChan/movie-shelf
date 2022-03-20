@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/movie-details/movie-details.module').then((m) => m.MovieDetailsModule)
   },
   {
+    path: 'auth/:authType',
+    loadChildren: () => import('./pages/auth/auth.module').then((m) => m.AuthModule)
+  },
+  {
     path: ':section/:category',
     loadChildren: () => import('./pages/homepage/homepage.module').then((m) => m.HomepageModule)
   },

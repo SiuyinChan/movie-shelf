@@ -1,8 +1,13 @@
-package com.backend.backend.mapper;
+package backend.mapper;
 
-import com.backend.backend.dto.response.UserResponse;
-import com.backend.backend.entity.User;
+import java.util.stream.Collectors;
+
+import backend.dto.response.UserResponse;
+import backend.entity.User;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import static org.mapstruct.ReportingPolicy.IGNORE;
 

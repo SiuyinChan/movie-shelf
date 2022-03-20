@@ -1,8 +1,8 @@
-package dashboard.security;
+package backend.security;
 
-import dashboard.dto.error.ErrorResponse;
-import dashboard.entity.User;
-import dashboard.service.UserService;
+import backend.dto.error.ErrorResponse;
+import backend.entity.User;
+import backend.service.UserService;
 import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

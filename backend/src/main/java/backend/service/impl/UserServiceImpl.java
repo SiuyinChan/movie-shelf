@@ -1,8 +1,9 @@
-package com.backend.backend.service.impl;
+package backend.service.impl;
 
-import com.backend.backend.entity.User;
-import com.backend.backend.repository.UserRepository;
-import com.backend.backend.service.UserService;
+import backend.entity.User;
+import backend.exception.UserNotFoundException;
+import backend.repository.UserRepository;
+import backend.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,6 +17,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Optional<User> findById(Long id) {
+        return this.userRepository.findById(id);
+    }
+
+    @Override
     public Optional<User> findByEmail(String email) {
         return this.userRepository.findByEmail(email);
     }
@@ -23,5 +29,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public User loadUserById(Long id) {
+        return findById(id).orElseThrow(UserNotFoundException::new);
     }
 }

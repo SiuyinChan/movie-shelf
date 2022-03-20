@@ -1,10 +1,10 @@
-package com.backend.backend.web.rest;
+package backend.web.rest;
 
-import com.backend.backend.dto.request.LoginRequest;
-import com.backend.backend.dto.request.RegisterRequest;
-import com.backend.backend.dto.response.LoginResponse;
-import com.backend.backend.dto.response.UserResponse;
-import com.backend.backend.service.AuthService;
+import backend.dto.request.LoginRequest;
+import backend.dto.request.RegisterRequest;
+import backend.dto.response.LoginResponse;
+import backend.dto.response.UserResponse;
+import backend.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

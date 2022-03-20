@@ -1,6 +1,6 @@
-package com.backend.backend.security;
+package backend.security;
 
-import com.backend.backend.entity.User;
+import backend.entity.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;

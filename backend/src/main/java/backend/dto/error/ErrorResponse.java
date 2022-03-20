@@ -1,4 +1,4 @@
-package dashboard.dto.error;
+package backend.dto.error;
 
 import org.springframework.http.HttpStatus;
 

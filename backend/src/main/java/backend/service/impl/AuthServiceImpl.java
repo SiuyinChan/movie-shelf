@@ -1,17 +1,17 @@
-package com.backend.backend.service.impl;
+package backend.service.impl;
 
-import com.backend.backend.dto.request.LoginRequest;
-import com.backend.backend.dto.request.RegisterRequest;
-import com.backend.backend.dto.response.LoginResponse;
-import com.backend.backend.dto.response.UserResponse;
-import com.backend.backend.entity.User;
-import com.backend.backend.exception.UserAlreadyExistsException;
-import com.backend.backend.exception.UserNotFoundException;
-import com.backend.backend.exception.WrongPasswordException;
-import com.backend.backend.mapper.UserMapper;
-import com.backend.backend.security.JwtProvider;
-import com.backend.backend.service.AuthService;
-import com.backend.backend.service.UserService;
+import backend.dto.request.LoginRequest;
+import backend.dto.request.RegisterRequest;
+import backend.dto.response.LoginResponse;
+import backend.dto.response.UserResponse;
+import backend.entity.User;
+import backend.exception.UserAlreadyExistsException;
+import backend.exception.UserNotFoundException;
+import backend.exception.WrongPasswordException;
+import backend.mapper.UserMapper;
+import backend.security.JwtProvider;
+import backend.service.AuthService;
+import backend.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

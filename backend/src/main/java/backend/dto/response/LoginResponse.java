@@ -1,4 +1,4 @@
-package com.backend.backend.dto.response;
+package backend.dto.response;
 
 public class LoginResponse {
     private String token;

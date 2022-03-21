@@ -1,0 +1,19 @@
+<div class="auth">
+  <div class="auth-container">
+    <div class="auth-title">{{ authType | uppercase }}</div>
+    <form class="auth-form" [formGroup]="authForm">
+
+      <label for="username" *ngIf="authType === 'register'">Username: </label>
+      <input id="username" type="text" formControlName="username" *ngIf="authType === 'register'">
+
+      <label for="username">Email: </label>
+      <input id="email" type="text" formControlName="email">
+
+      <label for="password">Password: </label>
+      <input id="password" type="password" formControlName="password">
+
+    </form>
+    <div class="auth-button" (click)="authType === 'register' ? register() : login()">{{ authType | uppercase }}</div>
+    <div class="auth-nav" *ngIf="authType === 'login'">Don't have an account ? <span (click)="navigateRegister()">Create one</span>.</div>
+  </div>
+</div>

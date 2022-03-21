@@ -1,0 +1,11 @@
+<div class="user-capsule">
+  <div class="user-capsule-profile"><img src="assets/icons/profile.svg" (click)="toggleDropdownMenu($event)"></div>
+  <div class="user-capsule-dropdown" *ngIf="showDropdownMenu && !isLogged">
+    <div class="user-capsule-dropdown-item" (click)="navigateLogin()">Login</div>
+    <div class="user-capsule-dropdown-item" (click)="navigateRegister()">Register</div>
+  </div>
+  <div class="user-capsule-dropdown" *ngIf="showDropdownMenu && isLogged">
+    <div class="user-capsule-dropdown-item" (click)="navigateLogin()">Profile</div>
+    <div class="user-capsule-dropdown-item" (click)="navigateLogout()">Logout</div>
+  </div>
+</div>

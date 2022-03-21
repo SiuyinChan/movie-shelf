@@ -1,5 +1,9 @@
-<div class="movie-card" (click)="navigate(movie.id)">
-  <img class="movie-card-image" [src]="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" alt="movie image">
+<div class="movie-card" (click)="navigateMovieDetails()">
+  <div class="movie-card-image">
+    <div class="movie-card-image-top">
+      <img [src]="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" alt="movie image">
+    </div>
+  </div>
   <div class="movie-card-info">
     <div class="movie-card-info-title">{{ movie.title }}</div>
     <div class="movie-card-info-rate">

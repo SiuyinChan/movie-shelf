@@ -1,5 +1,5 @@
 export interface UserMovieList {
-  id: number;
+  id?: number;
   userId: number;
   movieId: number;
   type: string;

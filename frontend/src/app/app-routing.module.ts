@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserResolver } from "./resolvers/user.resolver";
 
 const routes: Routes = [
   {path: '', redirectTo: 'discover/popular', pathMatch: 'full'},
@@ -13,7 +14,10 @@ const routes: Routes = [
   },
   {
     path: ':section/:category',
-    loadChildren: () => import('./pages/homepage/homepage.module').then((m) => m.HomepageModule)
+    loadChildren: () => import('./pages/homepage/homepage.module').then((m) => m.HomepageModule),
+    resolve: {
+      user: UserResolver,
+    }
   },
   {path: '**', redirectTo: ''},
 ];

@@ -12,15 +12,20 @@ export class UserMovieListService {
 
   private baseUrl = environment.API_BASE_URL;
 
-  constructor(private http: HttpClient, private userService: UserService) {
+  constructor(private http: HttpClient,
+              private readonly userService: UserService) {
   }
 
-  addMovieToList(userMovieList: UserMovieList) : Observable<UserMovieList> {
-    return this.http.post<UserMovieList>(`${this.baseUrl}/movie-lists/create`, userMovieList)
+  addMovieToList(movieId: number, type: string) : Observable<UserMovieList> {
+    let userMovieList = {
+      userId: this.userService.currentUserValue.id,
+      movieId,
+      type
+    }
+    return this.http.post<UserMovieList>(`${this.baseUrl}/movie-lists/create`, userMovieList);
   }
 
   getMoviesInMovieList(listType: string) : Observable<Movies> {
-    let userId = 2;
-    return this.http.get<Movies>(`${this.baseUrl}/movie-lists/${listType}/${userId}`);
+    return this.http.get<Movies>(`${this.baseUrl}/movie-lists/${listType}/${this.userService.currentUserValue.id}`);
   }
 }

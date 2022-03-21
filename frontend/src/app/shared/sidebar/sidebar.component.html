@@ -1,6 +1,10 @@
 <div class="sidebar">
   <img alt="movie icon" class="sidebar-image" src="../../../assets/icons/cinema-icon.svg">
   <div class="sidebar-content">
+    <div class="sidebar-content-list">
+      <div class="sidebar-content-list-item" *ngIf="isLogged" (click)="navigateWishList()">{{ "my wish list" | uppercase}}</div>
+      <div class="sidebar-content-list-item" *ngIf="isLogged" (click)="navigateWatchedList()">{{ "my watched list" | uppercase}}</div>
+    </div>
     <div *ngFor="let section of sections" class="sidebar-content-item">
       <div class="sidebar-content-item-title">{{ section.title }}</div>
       <div *ngFor="let category of section.categories" class="sidebar-content-item-categories">

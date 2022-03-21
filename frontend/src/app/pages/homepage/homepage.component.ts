@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { MovieService } from "../../services/movie.service";
-import { ActiveCategory, Movie, PaginateResult, Section } from "../../models";
+import { ActiveCategory, Movie, MovieDetails, Movies, PaginateResult, Section } from "../../models";
+import { UserMovieListService } from "../../services/user-movielist.service";
 
 @Component({
   selector: 'app-homepage',
@@ -17,7 +18,8 @@ export class HomepageComponent {
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
-    private readonly movieService: MovieService
+    private readonly movieService: MovieService,
+    private readonly userMovieListService: UserMovieListService
   ) {
     this.movieService.getMovieGenres().subscribe(() => {
       this.sections = this.movieService.movieSections;
@@ -28,6 +30,16 @@ export class HomepageComponent {
           this.movieService.getMoviesByName(params['category']).subscribe((r: PaginateResult) => {
             this.movies = r.results;
           })
+        } else if (params['section'] === 'movie-list') {
+          let tmp: Movie[] = [];
+          this.userMovieListService.getMoviesInMovieList(params['category']).subscribe((movies: Movies) => {
+            movies.movies.forEach((m => {
+              this.movieService.getMovieById(m).subscribe((movieDetails: MovieDetails) => {
+                tmp.push(movieDetails);
+              })
+            }))
+            this.movies = tmp;
+          });
         } else {
           this.movieService.getMoviesByCategory(params['category']).subscribe((r: PaginateResult) => {
             this.movies = r.results;

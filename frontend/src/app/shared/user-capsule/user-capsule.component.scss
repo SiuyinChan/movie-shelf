@@ -1,5 +1,4 @@
 .user-capsule {
-  padding: 20px 60px 20px 20px;
   position: relative;
   display: inline-block;
 
@@ -22,8 +21,8 @@
     min-width: 120px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 1;
-    right: 50px;
-    top: 75px;
+    right: 0;
+    top: 50px;
     border-radius: 5px;
 
     &-item {
@@ -39,21 +38,4 @@
         }
     }
   }
-
-  //&-button {
-  //  color: #284350;
-  //  border: #284350 solid 1px;
-  //  border-radius: 50px;
-  //  margin-right: 10px;
-  //  cursor: pointer;
-  //  height: 39px;
-  //  display: flex;
-  //  justify-content: center;
-  //  align-items: center;
-  //  width: 110px;
-  //  &:hover {
-  //    color: whitesmoke;
-  //    background-color: #284350;
-  //  }
-  //}
 }

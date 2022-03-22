@@ -22,7 +22,6 @@ public class UserMovieListController {
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody
     UserMovieListResponse createUserMovieList(@Valid @RequestBody UserMovieListRequest userMovieListRequest) {
-        System.out.print("zizi");
         return userMovieListService.save(userMovieListRequest);
     }
 

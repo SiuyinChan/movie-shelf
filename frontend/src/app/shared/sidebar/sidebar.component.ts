@@ -23,4 +23,8 @@ export class SidebarComponent {
   public navigateWatchedList() {
     this.router.navigate(['movie-list', 'watched-list']).then();
   }
+
+  navigateHome() {
+    this.router.navigate(['discover', 'popular']).then();
+  }
 }

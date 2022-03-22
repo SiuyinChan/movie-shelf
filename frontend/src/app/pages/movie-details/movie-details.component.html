@@ -1,4 +1,4 @@
-<app-layout [sections]="sections" (categoryClicked)="onCategoryClicked($event)">
+<app-layout [sections]="sections" (categoryClicked)="onCategoryClicked($event)" xmlns="http://www.w3.org/1999/html">
   <div class="movie-details" *ngIf="movie">
     <div class="movie-details-info">
       <div class="movie-details-info-image">
@@ -44,8 +44,16 @@
         <div class="movie-details-info-description-cast">
           <div class="movie-details-info-description-cast-title">{{ 'cast' | uppercase }}</div>
           <div class="movie-details-info-description-cast-content">
-            <div class="movie-details-info-description-cast-content-name" *ngFor="let cast of casts ">{{ cast.name }} /</div>
+            <div class="movie-details-info-description-cast-content-name" *ngFor="let cast of casts ">{{ cast.name }}
+              /
+            </div>
           </div>
+        </div>
+        <div class="movie-details-info-description-buttons">
+          <a class="movie-details-info-description-buttons-button" target="_blank" [href]="movie.homepage"><span>Website</span><img src="assets/icons/link.svg"></a>
+          <a class="movie-details-info-description-buttons-button"  target="_blank" [href]="'https://www.imdb.com/title/' + movie.imdb_id"><span>IMDB</span><img
+            src="assets/icons/imdb.svg"></a>
+          <a class="movie-details-info-description-buttons-button"  target="_blank" [href]="'https://www.youtube.com/watch?v=' + movie.videos.results[0].key"><span>Trailer</span><img src="assets/icons/play.svg"></a>
         </div>
       </div>
     </div>

@@ -20,13 +20,10 @@
   }
 
   &-movies-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     margin-top: 40px;
-    min-width: calc(100vw - 300px);
-
-    app-movie-card {
-      flex: 0 0 20%;
-    }
+    row-gap: 40px;
+    column-gap: 30px;
   }
 }

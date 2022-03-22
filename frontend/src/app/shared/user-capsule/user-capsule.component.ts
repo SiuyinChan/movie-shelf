@@ -27,6 +27,10 @@ export class UserCapsuleComponent {
     this.router.navigate(['auth', 'register']).then();
   }
 
+  public navigateProfile() {
+    this.router.navigate(['profile']).then();
+  }
+
   public navigateLogout() {
     sessionStorage.removeItem('token');
     this.isLogged = false;

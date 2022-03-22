@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Movie, UserMovieList } from "../../models";
+import { Movie } from "../../models";
 import { Router } from "@angular/router";
 import { UserMovieListService } from "../../services/user-movielist.service";
 
@@ -24,11 +24,13 @@ export class MovieCardComponent implements OnInit {
     this.router.navigate(['movie', this.movie.id]).then();
   }
 
-  public addMovieToWishlist(): void {
+  public addMovieToWishlist(event: Event): void {
+    event.stopPropagation();
     this.userMovieListService.addMovieToList(this.movie.id, "WISH_LIST").subscribe();
   }
 
-  public addMovieToWatchedList(): void {
+  public addMovieToWatchedList(event: Event): void {
+    event.stopPropagation();
     this.userMovieListService.addMovieToList(this.movie.id, "WATCHED_LIST").subscribe();
   }
 }

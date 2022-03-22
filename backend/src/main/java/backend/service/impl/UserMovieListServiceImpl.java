@@ -5,6 +5,7 @@ import backend.dto.response.UserMovieListResponse;
 import backend.entity.MovieListType;
 import backend.entity.User;
 import backend.entity.UserMovieList;
+import backend.exception.UserMovieListAlreadyExistsException;
 import backend.mapper.UserMovieListMapper;
 import backend.repository.UserMovieListRepository;
 import backend.service.UserMovieListService;
@@ -12,6 +13,7 @@ import backend.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserMovieListServiceImpl implements UserMovieListService {
@@ -25,6 +27,11 @@ public class UserMovieListServiceImpl implements UserMovieListService {
 
     @Override
     public UserMovieListResponse save(UserMovieListRequest userMovieListRequest) {
+        Optional<UserMovieList> existingUserMovieList = userMovieListRepository.findByUserIdAndMovieIdAndType(userMovieListRequest.getUserId(), userMovieListRequest.getMovieId(), userMovieListRequest.getType());
+        if (existingUserMovieList.isPresent()) {
+            throw new UserMovieListAlreadyExistsException();
+        }
+
         User user = userService.loadUserById(userMovieListRequest.getUserId());
 
         UserMovieList userMovieList = new UserMovieList();

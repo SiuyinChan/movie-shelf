@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { MovieService } from "../../services/movie.service";
 import { ActiveCategory, Movie, MovieDetails, PaginateResult, Section } from "../../models";
+import { UserMovieListService } from "../../services/user-movielist.service";
 
 @Component({
   selector: 'app-movie-details',
@@ -9,7 +10,7 @@ import { ActiveCategory, Movie, MovieDetails, PaginateResult, Section } from "..
   styleUrls: ['./movie-details.component.scss']
 })
 export class MovieDetailsComponent implements OnInit {
-  public movie?: MovieDetails;
+  public movie!: MovieDetails;
   public sections: Section[] = [];
   public casts: any;
   public recommendations?: Movie[];
@@ -17,7 +18,8 @@ export class MovieDetailsComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
-    private readonly movieService: MovieService
+    private readonly movieService: MovieService,
+    private readonly userMovieListService: UserMovieListService
   ) {
     this.movieService.getMovieGenres().subscribe(() => {
       this.sections = this.movieService.movieSections;
@@ -46,5 +48,13 @@ export class MovieDetailsComponent implements OnInit {
 
   onGenreClicked(genre: string): void {
     this.router.navigate(['genres', genre.toLowerCase()]).then();
+  }
+
+  public addMovieToWishlist(event: Event): void {
+    this.userMovieListService.addMovieToList(this.movie.id, "WISH_LIST").subscribe();
+  }
+
+  public addMovieToWatchedList(event: Event): void {
+    this.userMovieListService.addMovieToList(this.movie.id, "WATCHED_LIST").subscribe();
   }
 }

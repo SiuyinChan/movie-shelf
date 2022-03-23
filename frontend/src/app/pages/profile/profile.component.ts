@@ -61,4 +61,12 @@ export class ProfileComponent implements OnInit {
   onCategoryClicked(event: ActiveCategory): void {
   }
 
+  public navigateWishList() {
+    this.router.navigate(['movie-list', 'wish-list']).then();
+  }
+
+  public navigateWatchedList() {
+    this.router.navigate(['movie-list', 'watched-list']).then();
+  }
+
 }

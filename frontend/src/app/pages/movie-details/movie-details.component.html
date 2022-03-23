@@ -3,6 +3,10 @@
     <div class="movie-details-info">
       <div class="movie-details-info-image">
         <img [src]="'https://image.tmdb.org/t/p/w780/' + movie.poster_path" alt="movie image">
+        <div class="movie-details-info-button-container">
+          <div class="movie-details-info-button" (click)="addMovieToWishlist($event)"><img src="../../../assets/icons/add-round.svg"></div>
+          <div class="movie-details-info-button" (click)="addMovieToWatchedList($event)"><img src="../../../assets/icons/checked-round.svg"></div>
+        </div>
       </div>
       <div class="movie-details-info-description">
         <div class="movie-details-info-description-title">{{ movie.title }}</div>

@@ -42,6 +42,7 @@ export class HomepageComponent {
           });
         } else {
           this.movieService.getMoviesByCategory(params['category']).subscribe((r: PaginateResult) => {
+            console.log(r.results);
             this.movies = r.results;
           })
         }

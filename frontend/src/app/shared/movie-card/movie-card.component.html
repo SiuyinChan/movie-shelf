@@ -1,6 +1,6 @@
 <div class="movie-card" (click)="navigateMovieDetails()">
   <div class="movie-card-image">
-    <img [src]="'https://image.tmdb.org/t/p/w342/' + movie.poster_path" alt="movie image">
+    <img [src]= "movie.poster_path ? 'https://image.tmdb.org/t/p/w342/' + movie.poster_path : '/assets/images/singer.png'" alt="movie image">
     <div class="movie-card-button-container">
       <div class="movie-card-button" (click)="addMovieToWishlist($event)"><img src="../../../assets/icons/add-round.svg"></div>
       <div class="movie-card-button" (click)="addMovieToWatchedList($event)"><img src="../../../assets/icons/checked-round.svg"></div>

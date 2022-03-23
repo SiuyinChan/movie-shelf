@@ -6,11 +6,11 @@
       </div>
       <div class="profile-left-name">{{ username }}</div>
       <div class="profile-left-list">
-        <div class="profile-left-list-wish">
+        <div class="profile-left-list-wish" (click)="navigateWishList()">
           <div class="profile-left-list-wish-number">{{ wishlistMovies }}</div>
           <div class="profile-left-list-wish-name">{{ "to watch" | uppercase}}</div>
         </div>
-        <div class="profile-left-list-watched">
+        <div class="profile-left-list-watched" (click)="navigateWatchedList()">
           <div class="profile-left-list-watched-number">{{ watchedlistMovies }}</div>
           <div class="profile-left-list-watched-name">{{ "watched" | uppercase}}</div>
         </div>

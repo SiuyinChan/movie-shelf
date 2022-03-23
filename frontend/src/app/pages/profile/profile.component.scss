@@ -39,6 +39,7 @@
         align-items: center;
         border-right: 1px solid #284350;
         padding-right: 40px;
+        cursor: pointer;
 
         &-number {
           font-size: 40px;
@@ -56,6 +57,7 @@
         flex-direction: column;
         align-items: center;
         padding-left: 40px;
+        cursor: pointer;
 
         &-number {
           font-size: 40px;

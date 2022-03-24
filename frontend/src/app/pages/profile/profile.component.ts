@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActiveCategory, MovieDetails, Movies, Section } from "../../models";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../services/user.service";
 import { UserMovieListService } from "../../services/user-movielist.service";
@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   public wishlistMovies!: number;
   public watchedlistMovies!: number;
   public username: string;
+  public showInformation!: boolean;
 
   public sections: Section[] = [{
     id: 1,
@@ -35,13 +36,21 @@ export class ProfileComponent implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly fb: FormBuilder,
+    private readonly route: ActivatedRoute,
     private readonly userService: UserService,
     private readonly userMovieListService: UserMovieListService
   ) {
+    this.route.params.subscribe((params) => {
+      if (params['category'] === "information") {
+        this.showInformation = true;
+      } else {
+        this.showInformation = false;
+      }
+    })
+
     this.profileForm = this.fb.group({
       username: [this.userService.currentUserValue.username, [Validators.required]],
       email: [this.userService.currentUserValue.email, [Validators.required, Validators.email]],
-      password: [this.userService.currentUserValue.password, [Validators.required]],
     });
 
     this.userMovieListService.getMoviesInMovieList('wish-list').subscribe((movies: Movies) => {
@@ -59,6 +68,7 @@ export class ProfileComponent implements OnInit {
   }
 
   onCategoryClicked(event: ActiveCategory): void {
+    this.router.navigate([event.section.toLowerCase(), event.category.toLowerCase()]).then();
   }
 
   public navigateWishList() {

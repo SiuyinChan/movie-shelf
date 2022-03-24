@@ -28,7 +28,7 @@ export class UserCapsuleComponent {
   }
 
   public navigateProfile() {
-    this.router.navigate(['profile']).then();
+    this.router.navigate(['profile', 'information']).then();
   }
 
   public navigateLogout() {

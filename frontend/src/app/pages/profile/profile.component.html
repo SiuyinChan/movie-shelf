@@ -1,39 +1,39 @@
 <app-layout [sections]="sections" (categoryClicked)="onCategoryClicked($event)">
   <div class="profile">
-    <div class="profile-left">
-      <div class="profile-left-photo">
-        <img src="assets/icons/profile.svg">
-      </div>
-      <div class="profile-left-name">{{ username }}</div>
-      <div class="profile-left-list">
-        <div class="profile-left-list-wish" (click)="navigateWishList()">
-          <div class="profile-left-list-wish-number">{{ wishlistMovies }}</div>
-          <div class="profile-left-list-wish-name">{{ "to watch" | uppercase}}</div>
+    <ng-container *ngIf="showInformation">
+      <div class="profile-left">
+        <div class="profile-left-photo">
+          <img src="assets/icons/profile.svg">
         </div>
-        <div class="profile-left-list-watched" (click)="navigateWatchedList()">
-          <div class="profile-left-list-watched-number">{{ watchedlistMovies }}</div>
-          <div class="profile-left-list-watched-name">{{ "watched" | uppercase}}</div>
+        <div class="profile-left-name">{{ username }}</div>
+        <div class="profile-left-list">
+          <div class="profile-left-list-wish" (click)="navigateWishList()">
+            <div class="profile-left-list-wish-number">{{ wishlistMovies }}</div>
+            <div class="profile-left-list-wish-name">{{ "to watch" | uppercase}}</div>
+          </div>
+          <div class="profile-left-list-watched" (click)="navigateWatchedList()">
+            <div class="profile-left-list-watched-number">{{ watchedlistMovies }}</div>
+            <div class="profile-left-list-watched-name">{{ "watched" | uppercase}}</div>
+          </div>
+        </div>
+        <div class="profile-left-button">Upload new avatar</div>
+      </div>
+      <div class="profile-right">
+        <div class="profile-right-header">BASIC INFO</div>
+        <form class="profile-right-form" [formGroup]="profileForm">
+
+          <label for="username">Username: </label>
+          <input id="username" type="text" formControlName="username">
+
+          <label for="username">Email: </label>
+          <input id="email" type="text" formControlName="email">
+
+        </form>
+        <div class="profile-right-button">
+          <span>Save</span>
         </div>
       </div>
-      <div class="profile-left-button">Upload new avatar</div>
-    </div>
-    <div class="profile-right">
-      <div class="profile-right-header">BASIC INFO</div>
-      <form class="profile-right-form" [formGroup]="profileForm">
-
-        <label for="username">Username: </label>
-        <input id="username" type="text" formControlName="username">
-
-        <label for="username">Email: </label>
-        <input id="email" type="text" formControlName="email">
-
-        <label for="password">Password: </label>
-        <input id="password" type="password" formControlName="password">
-
-      </form>
-      <div class="profile-right-button">
-        <span>Save</span>
-      </div>
-    </div>
+    </ng-container>
+    <ng-container *ngIf="!showInformation">Setting is working</ng-container>
   </div>
 </app-layout>

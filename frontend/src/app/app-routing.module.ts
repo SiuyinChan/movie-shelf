@@ -5,7 +5,7 @@ import { UserResolver } from "./resolvers/user.resolver";
 const routes: Routes = [
   {path: '', redirectTo: 'discover/popular', pathMatch: 'full'},
   {
-    path: 'profile',
+    path: 'profile/:category',
     loadChildren: () => import('./pages/profile/profile.module').then((m) => m.ProfileModule),
     resolve: {
       user: UserResolver,

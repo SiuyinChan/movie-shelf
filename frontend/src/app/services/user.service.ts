@@ -31,4 +31,8 @@ export class UserService {
       this._user$.next(user);
     }))
   }
+
+  public updateUser(user: User): Observable<User> {
+    return this.http.patch<User>(`${this.baseUrl}/user/update`, user)
+  }
 }

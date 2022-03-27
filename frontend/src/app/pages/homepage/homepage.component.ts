@@ -14,6 +14,7 @@ export class HomepageComponent {
   public searchedMovie: boolean = false;
   public movies: Movie[] = [];
   public sections: Section[] = [];
+  public currentPage: number = 1;
 
   constructor(
     private readonly router: Router,
@@ -51,6 +52,23 @@ export class HomepageComponent {
   }
 
   onCategoryClicked(event: ActiveCategory): void {
+    this.currentPage = 1;
     this.router.navigate([event.section.toLowerCase(), event.category.toLowerCase()]).then();
+  }
+
+  onPageChange(type: string) {
+    if (type === "after") {
+      this.currentPage += 1;
+    } else {
+      this.currentPage -= 1;
+    }
+    this.route.params.subscribe((params) => {
+      if (params['section'] === 'discover' || params['section'] === 'genres') {
+        this.movieService.getMoviesByCategory(params['category'], 'popularity.desc', this.currentPage).subscribe((r: PaginateResult) => {
+          console.log(r.results);
+          this.movies = r.results;
+        })
+      }
+    });
   }
 }

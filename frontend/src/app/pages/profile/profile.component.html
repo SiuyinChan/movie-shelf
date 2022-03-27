@@ -18,8 +18,12 @@
         </div>
         <div class="profile-left-button">Upload new avatar</div>
       </div>
+      <div class="profile-right-container">
       <div class="profile-right">
-        <div class="profile-right-header">BASIC INFO</div>
+        <div class="profile-right-header">
+          <div class="profile-right-header-title">BASIC INFO</div>
+          <div class="profile-right-header-button" (click)="updateBasicInfo()">Save</div>
+        </div>
         <form class="profile-right-form" [formGroup]="profileForm">
 
           <label for="username">Username: </label>
@@ -29,9 +33,17 @@
           <input id="email" type="text" formControlName="email">
 
         </form>
-        <div class="profile-right-button">
-          <span>Save</span>
+      </div>
+      <div class="profile-right">
+        <div class="profile-right-header">
+          <div class="profile-right-header-title">CHANGE MY PASSWORD</div>
+          <div class="profile-right-header-button" (click)="updatePassword()">Save</div>
         </div>
+        <form class="profile-right-form" [formGroup]="passwordForm">
+          <label for="password">New password: </label>
+          <input id="password" type="password" formControlName="password">
+        </form>
+      </div>
       </div>
     </ng-container>
     <ng-container *ngIf="!showInformation">Setting is working</ng-container>

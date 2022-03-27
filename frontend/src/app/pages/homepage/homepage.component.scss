@@ -21,9 +21,29 @@
 
   &-movies-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     margin-top: 40px;
     row-gap: 40px;
     column-gap: 30px;
+  }
+
+  &-footer {
+    display: flex;
+    margin-top: 20px;
+
+    &-button {
+      padding: 10px 30px;
+      color: white;
+      border: 1px solid #284350;
+      background-color: #284350;
+      cursor: pointer;
+      border-radius: 50px;
+      transition: all 600ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+
+      &:hover {
+        color: #284350;
+        background-color: white;
+      }
+    }
   }
 }

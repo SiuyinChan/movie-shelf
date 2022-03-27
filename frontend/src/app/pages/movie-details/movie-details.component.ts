@@ -34,7 +34,7 @@ export class MovieDetailsComponent implements OnInit {
         console.log(movie);
       });
       this.movieService.getCastByMovieId(parseInt(movieId)).subscribe((credits: any) => {
-        this.casts = credits.cast.slice(0, 5);
+        this.casts = credits.cast.slice(0, 3);
       })
       this.movieService.getRecommendationByMovieId(parseInt(movieId)).subscribe((recommendations: PaginateResult) => {
         this.recommendations = recommendations.results;

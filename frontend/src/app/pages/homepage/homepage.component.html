@@ -7,5 +7,9 @@
     <div class="homepage-movies-container">
       <app-movie-card [movie]="movie" *ngFor="let movie of movies"></app-movie-card>
     </div>
+    <div class="homepage-footer" [ngStyle]="{'justify-content': currentPage === 1  ? 'flex-end' : 'space-between' }">
+      <div class="homepage-footer-button" (click)="onPageChange('before')" *ngIf="currentPage != 1">page {{ currentPage - 1 }}</div>
+      <div class="homepage-footer-button" (click)="onPageChange('after')">page {{ currentPage + 1 }}</div>
+    </div>
   </div>
 </app-layout>

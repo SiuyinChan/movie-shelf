@@ -13,6 +13,7 @@ import { UserMovieListService } from "../../services/user-movielist.service";
 export class ProfileComponent implements OnInit {
 
   public profileForm: FormGroup;
+  public passwordForm: FormGroup;
   public wishlistMovies!: number;
   public watchedlistMovies!: number;
   public username: string;
@@ -53,6 +54,10 @@ export class ProfileComponent implements OnInit {
       email: [this.userService.currentUserValue.email, [Validators.required, Validators.email]],
     });
 
+    this.passwordForm = this.fb.group({
+      password: [null, [Validators.required]],
+    });
+
     this.userMovieListService.getMoviesInMovieList('wish-list').subscribe((movies: Movies) => {
       this.wishlistMovies = movies.movies.length;
     });
@@ -79,4 +84,11 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['movie-list', 'watched-list']).then();
   }
 
+  updateBasicInfo() {
+    this.userService.updateUser(this.profileForm.value).subscribe();
+  }
+
+  updatePassword() {
+    this.userService.updateUser(this.passwordForm.value).subscribe();
+  }
 }

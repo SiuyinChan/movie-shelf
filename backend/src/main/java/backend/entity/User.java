@@ -24,6 +24,9 @@ public class User implements UserDetails {
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
+    @Column(name = "THUMBNAIL", length = 1000)
+    private Byte[] thumbnail;
+
     public User() {
     }
 
@@ -55,6 +58,14 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Byte[] getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(Byte[] thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     @Override

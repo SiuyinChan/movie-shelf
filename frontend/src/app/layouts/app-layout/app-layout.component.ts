@@ -14,7 +14,7 @@ export class AppLayoutComponent {
 
   constructor(private readonly breakpointObserver: BreakpointObserver) {
     this.breakpointObserver
-      .observe(['(max-width: 1280px)'])
+      .observe(['(max-width: 1279px)'])
       .subscribe((state: BreakpointState) => {
         this.isMobile = state.matches;
       });

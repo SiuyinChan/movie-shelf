@@ -33,6 +33,16 @@ export class UserService {
   }
 
   public updateUser(user: User): Observable<User> {
-    return this.http.patch<User>(`${this.baseUrl}/user/update`, user)
+    return this.http.patch<User>(`${this.baseUrl}/user/update`, user);
   }
+
+  public uploadThumbnail(thumbnail: File): Observable<File> {
+    const formData: FormData = new FormData();
+    formData.append('thumbnail', thumbnail, thumbnail.name);
+    return this.http.post<File>(`${this.baseUrl}/user/thumbnail-upload`, formData);
+  }
+
+  // getThumbnail(file: File): Observable<File> {
+  //   return this.http.post<File>(`${this.baseUrl}/user/thumbnail-upload`, file)
+  // }
 }

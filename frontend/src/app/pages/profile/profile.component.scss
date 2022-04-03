@@ -9,6 +9,10 @@
     align-items: center;
     min-width: 500px;
 
+    .file-input {
+      display: none;
+    }
+
     &-photo {
       margin-bottom: 5px;
 

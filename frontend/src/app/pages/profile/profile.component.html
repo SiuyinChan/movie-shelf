@@ -16,7 +16,9 @@
             <div class="profile-left-list-watched-name">{{ "watched" | uppercase}}</div>
           </div>
         </div>
-        <div class="profile-left-button">Upload new avatar</div>
+        <input type="file" class="file-input"
+               (change)="onFileSelected($event)" #fileUpload>
+        <div class="profile-left-button" (click)="fileUpload.click()">Upload new avatar</div>
       </div>
       <div class="profile-right-container">
       <div class="profile-right">

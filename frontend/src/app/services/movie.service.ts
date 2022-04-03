@@ -121,11 +121,12 @@ export class MovieService {
     })
   }
 
-  public getMoviesByName(name: string): Observable<PaginateResult> {
+  public getMoviesByName(name: string, page: number = 1): Observable<PaginateResult> {
     return this.http.get<any>(`${this.baseUrl}/search/movie`, {
       params: {
         api_key: this.apiKey,
         query: name,
+        page
       }
     })
   }

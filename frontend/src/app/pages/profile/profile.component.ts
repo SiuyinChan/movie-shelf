@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   public watchedlistMovies!: number;
   public username: string;
   public showInformation!: boolean;
+  public thumbnail: File | null = null;
 
   public sections: Section[] = [{
     id: 1,
@@ -42,11 +43,7 @@ export class ProfileComponent implements OnInit {
     private readonly userMovieListService: UserMovieListService
   ) {
     this.route.params.subscribe((params) => {
-      if (params['category'] === "information") {
-        this.showInformation = true;
-      } else {
-        this.showInformation = false;
-      }
+      this.showInformation = params['category'] === "information";
     })
 
     this.profileForm = this.fb.group({
@@ -70,6 +67,13 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onFileSelected(event: any) {
+    this.thumbnail = event?.target?.files[0];
+    if (this.thumbnail) {
+      this.userService.uploadThumbnail(this.thumbnail).subscribe();
+    }
   }
 
   onCategoryClicked(event: ActiveCategory): void {

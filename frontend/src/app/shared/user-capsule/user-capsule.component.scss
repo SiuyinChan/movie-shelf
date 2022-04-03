@@ -11,6 +11,11 @@
       display: flex;
       justify-content: center;
       cursor: pointer;
+
+      @media screen and (max-width: 1280px) {
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 

@@ -3,6 +3,11 @@
   background-color: #b0bec5;
   justify-content: space-between;
   padding: 15px 20px;
+  align-items: center;
+
+  @media screen and (max-width: 1280px) {
+    padding: 10px 20px;
+  }
 
   &-menu {
     cursor: pointer;
@@ -12,9 +17,16 @@
       height: 4px;
       display: block;
       background-color: #37474f;
-      margin: 4px 0px;
+      margin: 4px 0;
       border-radius: 10px;
     }
+  }
 
+  &-right {
+    display: flex;
+
+    app-searchbar {
+      margin-right: 15px;
+    }
   }
 }

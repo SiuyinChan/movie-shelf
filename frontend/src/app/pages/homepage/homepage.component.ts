@@ -68,6 +68,12 @@ export class HomepageComponent {
           console.log(r.results);
           this.movies = r.results;
         })
+      } else {
+        if (params['section'] === 'search') {
+          this.movieService.getMoviesByName(params['category'], this.currentPage).subscribe((r: PaginateResult) => {
+            this.movies = r.results;
+          })
+        }
       }
     });
   }

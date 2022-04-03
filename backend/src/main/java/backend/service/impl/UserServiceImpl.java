@@ -41,4 +41,16 @@ public class UserServiceImpl implements UserService {
         User user = loadUserById(id);
         userRepository.delete(user);
     }
+
+    @Override
+    public void uploadThumbnail(User user, byte[] compressedBytes) {
+        user.setThumbnail(compressedBytes);
+        userRepository.save(user);
+    }
+
+    @Override
+    public byte[] getThumbnailById(Long id) {
+        User user = loadUserById(id);
+        return user.getThumbnail();
+    }
 }

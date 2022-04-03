@@ -25,7 +25,7 @@ public class User implements UserDetails {
     private String password;
 
     @Column(name = "THUMBNAIL", length = 1000)
-    private Byte[] thumbnail;
+    private byte[] thumbnail;
 
     public User() {
     }
@@ -60,11 +60,11 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public Byte[] getThumbnail() {
+    public byte[] getThumbnail() {
         return thumbnail;
     }
 
-    public void setThumbnail(Byte[] thumbnail) {
+    public void setThumbnail(byte[] thumbnail) {
         this.thumbnail = thumbnail;
     }
 

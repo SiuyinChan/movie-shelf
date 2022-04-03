@@ -14,4 +14,8 @@ public interface UserService {
     User loadUserById(Long id);
 
     void deleteUserById(Long id);
+
+    void uploadThumbnail(User user, byte[] compressedBytes);
+
+    byte[] getThumbnailById(Long id);
 }
